@@ -8,10 +8,14 @@
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
+/[Uu]serSettings/
 /[Mm]emoryCaptures/
+/[Aa]ssets/[Pp]lugins/*
+/[Aa]ssets/[Ss]treamingAssets/*
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
+!/[Aa]ssets/[Pp]lugins/ImageFlip.dll
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
