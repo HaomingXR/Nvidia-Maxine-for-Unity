@@ -52,7 +52,7 @@ public class DemoAR : MonoBehaviour
 
         (x, y, w, h) = ArApp.Run(webcamTexture);
 
-        if (x == -1.0f)
+        if (x < 0.0f)
         {
             boxDisplay.enabled = false;
             return;

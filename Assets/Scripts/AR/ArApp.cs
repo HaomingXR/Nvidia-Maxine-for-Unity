@@ -85,7 +85,7 @@ namespace MaxineAR
             status = NvCVAPI.NvCVImage_Realloc(ref _tmpVFX, ArConfig.Width, ArConfig.Height, NvParameters.NvCVImage_PixelFormat.NVCV_BGR, NvParameters.NvCVImage_ComponentType.NVCV_U8, NvParameters.NVCV_CHUNKY, NvParameters.NVCV_GPU, 0);
             NvCVStatus.Catch(status);
 
-            MaxineVFX.VFxAPI.NVWrapperFromTexture2D(ref webcamTexture, ref fxSrcChunkyCPU);
+            NvCVAPI.NVWrapperFromTexture2D(ref webcamTexture, ref fxSrcChunkyCPU);
             status = NvCVAPI.NvCVImage_Transfer(fxSrcChunkyCPU, inputImageBuffer, 1.0f, stream, _tmpVFX);
             NvCVStatus.Catch(status);
 

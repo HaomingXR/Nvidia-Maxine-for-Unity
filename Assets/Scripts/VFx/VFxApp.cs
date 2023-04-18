@@ -122,7 +122,7 @@ namespace MaxineVFX
             webcamTexture.SetPixels(input.GetPixels());
             webcamTexture.Apply();
 
-            VFxAPI.NVWrapperFromTexture2D(ref webcamTexture, ref _srcVFX);
+            NvCVAPI.NVWrapperFromTexture2D(ref webcamTexture, ref _srcVFX);
             VFxAPI.EmptyNVWrapper(ref _dstVFX);
 
             status = VFxAPI.NvVFX_SetImage(handle, NvParameters.NVVFX_INPUT_IMAGE, ref _srcGpu);
@@ -147,7 +147,7 @@ namespace MaxineVFX
             status = NvCVAPI.NvCVImage_Transfer(_dstGpu, _dstVFX, 1.0f, stream, _tmpVFX);
             NvCVStatus.Catch(status);
 
-            VFxAPI.NVWrapperToTexture2D(ref _dstVFX, ref outputTexture);
+            NvCVAPI.NVWrapperToTexture2D(ref _dstVFX, ref outputTexture);
 
             Marshal.FreeHGlobal(buffer);
             DeallocateBuffers();
