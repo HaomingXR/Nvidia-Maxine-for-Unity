@@ -8,6 +8,8 @@ public class DemoVFx : MonoBehaviour
 
     void Awake()
     {
+        Application.targetFrameRate = VFxConfig.FPS;
+
         webcam = new WebCamTexture((int)VFxConfig.Width, (int)VFxConfig.Height, VFxConfig.FPS);
         useEffect = false;
         VFxApp.Init();

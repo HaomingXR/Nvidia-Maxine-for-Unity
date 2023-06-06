@@ -11,8 +11,8 @@
         public const uint False = 0u;
 
         public const uint StreamNumber = 1u;
-        public const uint Width = 1920u;
-        public const uint Height = 1080u;
-        public const int FPS = 24;
+        public const uint Width = 1280u;
+        public const uint Height = 720u;
+        public const int FPS = 30;
     }
 }

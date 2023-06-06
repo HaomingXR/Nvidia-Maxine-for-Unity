@@ -9,20 +9,26 @@ public class DemoAR : MonoBehaviour
 {
     private WebCamTexture webcamTexture;
     private Texture2D boxTexture;
+    private Texture2D focusTexture;
     private bool useEffect;
 
     [SerializeField]
     private RawImage webcamDisplay;
     [SerializeField]
     private RawImage boxDisplay;
+    [SerializeField]
+    private RawImage focusDisplay;
 
     private float x, y, w, h;
     private NativeArray<Color> colors;
 
     void Awake()
     {
+        Application.targetFrameRate = ArConfig.FPS;
+
         webcamTexture = new WebCamTexture((int)ArConfig.Width, (int)ArConfig.Height, ArConfig.FPS);
         boxTexture = new Texture2D((int)ArConfig.Width, (int)ArConfig.Height, TextureFormat.RGBA32, false);
+        focusTexture = new Texture2D(420, 69, TextureFormat.RGB24, false);
 
         colors = new NativeArray<Color>(boxTexture.GetPixels(), Allocator.Persistent);
 
@@ -54,9 +60,12 @@ public class DemoAR : MonoBehaviour
 
         if (x < 0.0f)
         {
+            focusDisplay.enabled = false;
             boxDisplay.enabled = false;
             return;
         }
+
+        HeadTracking.AutoFocus(ref focusTexture, webcamTexture, new Vector2(x, y), new Vector2(w * 1.2f, h * 1.2f));
 
         MarkTextureJob job = new MarkTextureJob
         {
@@ -73,6 +82,8 @@ public class DemoAR : MonoBehaviour
         boxTexture.SetPixels(colors.ToArray());
         boxTexture.Apply();
 
+        focusDisplay.texture = focusTexture;
+        focusDisplay.enabled = true;
         boxDisplay.texture = boxTexture;
         boxDisplay.enabled = true;
     }

@@ -1,8 +1,7 @@
-using UnityEngine;
 using System;
-using System.Collections.Generic;
-using NvAR_Status = System.Int32;
 using System.Runtime.InteropServices;
+using UnityEngine;
+using NvAR_Status = System.Int32;
 
 namespace MaxineAR
 {

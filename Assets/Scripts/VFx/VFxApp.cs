@@ -1,6 +1,6 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
 using System.Runtime.InteropServices;
+using UnityEngine;
 using NvVFx_Status = System.Int32;
 
 namespace MaxineVFX
